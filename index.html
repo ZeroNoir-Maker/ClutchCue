@@ -804,18 +804,41 @@ html>body{
   min-height:100vh;
   padding:32px;
   overflow-x:hidden;
+  color-scheme:dark;
+  --background:rgb(4 6 18);
+  --foreground:rgb(239 247 255);
+  --card:rgb(12 17 35 / 86%);
+  --card-foreground:rgb(239 247 255);
+  --primary:rgb(50 236 255);
+  --primary-foreground:rgb(1 11 18);
+  --secondary:rgb(18 24 48 / 96%);
+  --secondary-foreground:rgb(239 247 255);
+  --muted:rgb(112 140 181 / 16%);
+  --muted-foreground:rgb(157 177 206);
+  --accent:rgb(116 70 255 / 20%);
+  --accent-foreground:rgb(178 151 255);
+  --border:rgb(87 224 255 / 18%);
+  --ring:rgb(50 236 255 / 84%);
+  --viz-series-1:rgb(50 236 255);
+  --viz-series-2:rgb(178 92 255);
+  background:
+    radial-gradient(circle at 18% 0%, rgb(73 45 196 / 24%), transparent 32rem),
+    radial-gradient(circle at 85% 12%, rgb(0 220 255 / 13%), transparent 30rem),
+    rgb(4 6 18) !important;
 }
 @media (max-width:680px){html>body{padding:16px}}</style>
 </head>
 <body>
 <div id="clutchcue-mockup">
   <style>
-    #clutchcue-mockup { width: 100%; max-width: 1080px; margin: 0 auto; color: var(--foreground); }
+    #clutchcue-mockup { width: 100%; max-width: 1120px; margin: 0 auto; color: var(--foreground); }
+    #clutchcue-mockup::before { content: ""; display: block; height: 1px; margin-bottom: 24px; background: linear-gradient(90deg, transparent, var(--viz-series-1), var(--viz-series-2), transparent); box-shadow: 0 0 20px var(--viz-series-1); opacity: .8; }
     #clutchcue-mockup .shell { display: grid; grid-template-columns: 156px minmax(0, 1fr); gap: 24px; }
-    #clutchcue-mockup .sidebar { display: flex; flex-direction: column; gap: 8px; padding-top: 4px; }
-    #clutchcue-mockup .brand { display: flex; align-items: center; gap: 8px; margin-bottom: 18px; font-weight: 500; }
-    #clutchcue-mockup .brand-mark { display: grid; place-items: center; width: 30px; height: 30px; color: var(--primary-foreground); background: var(--primary); border-radius: 8px; }
+    #clutchcue-mockup .sidebar { display: flex; flex-direction: column; gap: 8px; padding: 14px 10px; border: 1px solid rgb(50 236 255 / 12%); border-radius: 18px; background: linear-gradient(180deg, rgb(15 22 45 / 80%), rgb(8 12 27 / 64%)); box-shadow: 0 18px 60px rgb(0 0 0 / 28%), inset 0 1px 0 rgb(255 255 255 / 4%); }
+    #clutchcue-mockup .brand { display: flex; align-items: center; gap: 8px; margin-bottom: 18px; font-weight: 500; letter-spacing: .02em; }
+    #clutchcue-mockup .brand-mark { display: grid; place-items: center; width: 32px; height: 32px; color: var(--primary-foreground); background: linear-gradient(135deg, var(--viz-series-1), var(--viz-series-2)); border-radius: 9px; box-shadow: 0 0 22px rgb(50 236 255 / 46%); }
     #clutchcue-mockup .nav-button { justify-content: flex-start; width: 100%; }
+    #clutchcue-mockup .nav-button.is-selected { box-shadow: 0 0 18px rgb(50 236 255 / 28%); }
     #clutchcue-mockup .main { min-width: 0; }
     #clutchcue-mockup .topbar, #clutchcue-mockup .section-head, #clutchcue-mockup .clip-meta, #clutchcue-mockup .metric-line { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
     #clutchcue-mockup .topbar { margin-bottom: 18px; }
@@ -825,16 +848,17 @@ html>body{
     #clutchcue-mockup .hero-grid { display: grid; grid-template-columns: 1.35fr .65fr; gap: 14px; margin-bottom: 18px; }
     #clutchcue-mockup .summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 18px; }
     #clutchcue-mockup .clip-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    #clutchcue-mockup .clip-preview { display: grid; place-items: center; min-height: 112px; margin: -16px -16px 14px; background: linear-gradient(145deg, color-mix(in srgb, var(--viz-series-1) 25%, var(--card)), var(--card)); border-radius: inherit; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
-    #clutchcue-mockup .play { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; color: var(--primary-foreground); background: var(--primary); }
+    #clutchcue-mockup .card { border-color: rgb(77 222 255 / 20%); background: linear-gradient(145deg, rgb(17 24 49 / 92%), rgb(8 12 29 / 92%)); box-shadow: 0 16px 48px rgb(0 0 0 / 25%), inset 0 1px 0 rgb(255 255 255 / 4%); }
+    #clutchcue-mockup .clip-preview { display: grid; place-items: center; min-height: 132px; margin: -16px -16px 14px; background: radial-gradient(circle at 50% 45%, rgb(50 236 255 / 17%), transparent 32%), linear-gradient(145deg, rgb(36 31 83), rgb(7 24 42)); border-radius: inherit; border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom: 1px solid rgb(50 236 255 / 18%); }
+    #clutchcue-mockup .play { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; color: var(--primary-foreground); background: linear-gradient(135deg, var(--viz-series-1), rgb(125 244 255)); box-shadow: 0 0 28px rgb(50 236 255 / 58%); }
     #clutchcue-mockup .impact { display: grid; gap: 10px; margin-top: 12px; }
     #clutchcue-mockup .impact-row { display: grid; grid-template-columns: 86px 1fr auto; align-items: center; gap: 8px; }
-    #clutchcue-mockup .track { height: 7px; background: var(--muted); border-radius: 99px; overflow: hidden; }
-    #clutchcue-mockup .fill { height: 100%; background: var(--viz-series-1); border-radius: inherit; }
+    #clutchcue-mockup .track { height: 7px; background: var(--muted); border: 1px solid rgb(50 236 255 / 8%); border-radius: 99px; overflow: hidden; }
+    #clutchcue-mockup .fill { height: 100%; background: linear-gradient(90deg, var(--viz-series-2), var(--viz-series-1)); border-radius: inherit; box-shadow: 0 0 12px rgb(50 236 255 / 50%); }
     #clutchcue-mockup .timeline { width: 100%; height: 190px; margin-top: 12px; }
     #clutchcue-mockup .axis { stroke: var(--border); stroke-width: 1; }
     #clutchcue-mockup .gridline { stroke: var(--border); stroke-width: 1; opacity: .6; }
-    #clutchcue-mockup .progress-path { fill: none; stroke: var(--viz-series-1); stroke-width: 3; }
+    #clutchcue-mockup .progress-path { fill: none; stroke: var(--viz-series-1); stroke-width: 3; filter: drop-shadow(0 0 5px rgb(50 236 255 / 70%)); }
     #clutchcue-mockup .progress-area { fill: color-mix(in srgb, var(--viz-series-1) 15%, transparent); }
     #clutchcue-mockup .point { fill: var(--card); stroke: var(--viz-series-1); stroke-width: 3; }
     #clutchcue-mockup .chart-label { fill: var(--muted-foreground); font-size: 11px; }
@@ -846,10 +870,11 @@ html>body{
     #clutchcue-mockup .feedback-icon { color: var(--viz-series-1); padding-top: 2px; }
     #clutchcue-mockup .compare { display: grid; grid-template-columns: 1fr auto 1fr; gap: 14px; align-items: center; }
     #clutchcue-mockup .delta { text-align: center; }
-    #clutchcue-mockup .legal { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--border); }
+    #clutchcue-mockup .viz-badge { border: 1px solid rgb(50 236 255 / 18%); box-shadow: inset 0 0 14px rgb(50 236 255 / 6%); }
+    #clutchcue-mockup .legal { margin-top: 24px; padding-top: 16px; border-top: 1px solid rgb(50 236 255 / 14%); }
     @media (max-width: 680px) {
       #clutchcue-mockup .shell { grid-template-columns: 1fr; }
-      #clutchcue-mockup .sidebar { flex-direction: row; flex-wrap: wrap; }
+      #clutchcue-mockup .sidebar { flex-direction: row; flex-wrap: wrap; padding: 12px; }
       #clutchcue-mockup .brand { width: 100%; margin-bottom: 4px; }
       #clutchcue-mockup .nav-button { width: auto; }
       #clutchcue-mockup .hero-grid, #clutchcue-mockup .summary-grid, #clutchcue-mockup .clip-grid, #clutchcue-mockup .coach-layout { grid-template-columns: 1fr; }
